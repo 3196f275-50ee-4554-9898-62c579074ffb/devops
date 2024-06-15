@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: yolo-train
+  namespace: mlflow
+spec:
+  template:
+    spec:
+      containers:
+      - name: yolo-train
+        image: yolo-train-mlflow
+        env:
+        - name: MLFLOW_TRACKING_URI
+          value: "http://mlflow.mlflow.svc.cluster.local:5000"
+        - name: MLFLOW_EXPERIMENT_NAME
+          value: "YOLO Pose Detection"
+      restartPolicy: Never
