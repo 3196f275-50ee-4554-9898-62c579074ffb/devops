@@ -29,3 +29,8 @@ kubectl port-forward <pod_name> 9092 -n kafka && cd ../
 ```bash
 cd graphana && kubectl create namespace monitoring && kubectl apply -f 00-grafana-config.yaml && kubectl apply -f 01-grafana-pvc.yaml && kubectl apply -f 02-grafana-deployment.yaml && kubectl apply -f 03-grafana-service.yaml && kubectl get pods -n monitoring && kubectl port-forward --namespace monitoring service/grafana 3000:80 && cd ../
 ```
+
+Пример прокидывания портов наружу сервера:
+```bash
+kubectl port-forward --namespace monitoring service/grafana 3000:80 --address 0.0.0.0 &
+```

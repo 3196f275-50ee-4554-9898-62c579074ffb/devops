@@ -6,7 +6,7 @@ from ultralytics import YOLO
 
 def train_yolo(data_path, epochs=50, img_size=640):
     # Настройка MLflow
-    mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5000"))
+    mlflow.set_tracking_uri("http://192.168.0.18:5000")
     mlflow.set_experiment("YOLO Pose Detection")
 
     with mlflow.start_run():
